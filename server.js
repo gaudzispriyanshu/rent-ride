@@ -209,21 +209,21 @@ export function makeServer({ environment = "test" } = {}) {
             this.namespace = "api"
             this.logging = false
             this.get("/cars", (schema, request) => {
-                return schema.cars.all()
+                return this.schema.cars.all()
             });
 
             this.get("/cars/:id", (schema, request) => {
                 const id = request.params.id
-                return schema.cars.find(id)
+                return this.schema.cars.find(id)
             });
 
             this.get("/host/cars", (schema, request) => {
-                return schema.cars.where({hostId : "123"})
+                return this.schema.cars.where({hostId : "123"})
             });
 
             this.get("/host/cars/:id", (schema, request) => {
                 const id = request.params.id
-                return schema.cars.find(id)
+                return this.schema.cars.find(id)
             });
         },
 
